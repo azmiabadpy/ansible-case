@@ -1,0 +1,22 @@
+---
+- name: installing nginx
+  apt:
+    name: nginx
+    state: present
+
+- name: configuring nginx
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+
+- name: copying index.html
+  copy:
+    src: /home/ubuntu/nginx/files/index.html
+    dest: /var/www/html
+
+  notify: restart nginx    
+
+- name: messages for completion 
+  debug: 
+    msg: " instatiiling and configurstion of nginx is done on {{inventory_hostname}}"  

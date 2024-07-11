@@ -1,0 +1,5 @@
+---
+# tasks file for apache2
+- include_tasks: install-apache2.yml
+- include_tasks: install-java.yml
+ 

@@ -1,0 +1,21 @@
+---
+- name: installing apache2 
+  apt:
+    name: apache2
+    state: present
+
+- name: configuring apach2
+  service: 
+    name: apache2
+    state: started
+    enabled: yes
+  
+- name: copying index.html
+  copy:
+    src: /home/ubuntu/apache2/files/index.html
+    dest: /var/www/html/
+  notify: restart apache2 
+
+- name: Post-installation message
+  debug:
+    msg: "Apache installation and configuration complete on {{ inventory_hostname }}"   

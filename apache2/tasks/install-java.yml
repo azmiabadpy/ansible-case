@@ -1,0 +1,10 @@
+---
+- name: install java
+  apt:
+    name: openjdk-11-jdk
+    state: present
+
+- name: message on installing java
+  debug:
+    msg: " installing of java is done on {{inventory_hostname}}"
+
